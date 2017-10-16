@@ -1,13 +1,11 @@
-### How to build a Docker Image with RocksDB and gRPC?
+### How to build a Docker Image with RocksDB and flask?
 
 ```sh
-docker build -t ubuntu-python3.6-rocksdb-grpc:1.0 .
+docker build -t pyhton-rocksdb-flask:latest .
 ```
 
-### How to run hello.py?
+### How to run app.py?
 
 ```sh
-docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp ubuntu-python3.6-rocksdb-grpc:1.0 python3.6 hello.py
-
-docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp ubuntu-python3.6-rocksdb-grpc:1.0 python3.6 hello-rocksdb.py
+docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp pyhton-rocksdb-flask:latest python3.6 app.py
 ```
