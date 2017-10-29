@@ -3,9 +3,10 @@
 # 
 ################################## client.py #############################
 '''
-import grpc
-import datastore_pb2
 import argparse
+
+import datastore_pb2
+import grpc
 
 PORT = 3000
 

@@ -4,13 +4,13 @@
 ################################## server.py #############################
 '''
 import time
-import grpc
+import uuid
+from concurrent import futures
+
 import datastore_pb2
 import datastore_pb2_grpc
-import uuid
+import grpc
 import rocksdb
-
-from concurrent import futures
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
