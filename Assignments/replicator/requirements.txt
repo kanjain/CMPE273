@@ -1,0 +1,7 @@
+#Commands to install grpcio tools and python-rocksdb locally
+[packages]
+grpcio-tools = "*" (https://pypi.python.org/pypi/grpcio-tools)
+python-rocksdb = "*" (https://pypi.python.org/pypi/python-rocksdb)
+
+  $ pip install grpcio-tools
+  $brew install pyrocksdb
