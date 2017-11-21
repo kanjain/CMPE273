@@ -41,7 +41,7 @@ class ReplicationServiceServicer(object):
   pass
 
   def sync(self, request, context):
-    """Master/Slave Sync operation 
+    """Master-Slave Sync operation 
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')

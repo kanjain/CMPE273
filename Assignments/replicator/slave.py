@@ -15,7 +15,7 @@ class SlaveReplicator():
 
     def sync(self):
         syncQueue = self.stub.sync(replicationService_pb2.ReplicationRequest())
-        print("Connection established from slave to master")
+        print("Connection established from slave to master.")
         for transaction in syncQueue:
             if transaction.action == 'put':
                 print("Put key = {}, value = {} to slave-db".format(transaction.key, transaction.value))

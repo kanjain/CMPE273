@@ -197,6 +197,57 @@ ReplicationResponse = _reflection.GeneratedProtocolMessageType('ReplicationRespo
 _sym_db.RegisterMessage(ReplicationResponse)
 
 
+
+_REPLICATIONSERVICE = _descriptor.ServiceDescriptor(
+  name='ReplicationService',
+  full_name='ReplicationService',
+  file=DESCRIPTOR,
+  index=0,
+  options=None,
+  serialized_start=184,
+  serialized_end=352,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='sync',
+    full_name='ReplicationService.sync',
+    index=0,
+    containing_service=None,
+    input_type=_REPLICATIONREQUEST,
+    output_type=_REPLICATIONRESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='delete',
+    full_name='ReplicationService.delete',
+    index=1,
+    containing_service=None,
+    input_type=_REQUEST,
+    output_type=_RESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='put',
+    full_name='ReplicationService.put',
+    index=2,
+    containing_service=None,
+    input_type=_REQUEST,
+    output_type=_RESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='get',
+    full_name='ReplicationService.get',
+    index=3,
+    containing_service=None,
+    input_type=_REQUEST,
+    output_type=_RESPONSE,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_REPLICATIONSERVICE)
+
+DESCRIPTOR.services_by_name['ReplicationService'] = _REPLICATIONSERVICE
+
 try:
   # THESE ELEMENTS WILL BE DEPRECATED.
   # Please use the generated *_pb2_grpc.py files instead.
@@ -244,7 +295,7 @@ try:
     pass
 
     def sync(self, request, context):
-      """Master/Slave Sync operation 
+      """Master-Slave Sync operation 
       """
       context.set_code(grpc.StatusCode.UNIMPLEMENTED)
       context.set_details('Method not implemented!')
@@ -309,7 +360,7 @@ try:
     # missing associated documentation comment in .proto file
     pass
     def sync(self, request, context):
-      """Master/Slave Sync operation 
+      """Master-Slave Sync operation 
       """
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
     def delete(self, request, context):
@@ -335,7 +386,7 @@ try:
     # missing associated documentation comment in .proto file
     pass
     def sync(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-      """Master/Slave Sync operation 
+      """Master-Slave Sync operation 
       """
       raise NotImplementedError()
     def delete(self, request, timeout, metadata=None, with_call=False, protocol_options=None):

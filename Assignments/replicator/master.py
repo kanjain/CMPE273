@@ -26,7 +26,14 @@ class MasterReplicator(replicationService_pb2.ReplicationServiceServicer):
         # Continuous loop
         while True:
             transaction = self.transaction_queue.get()
-            print("Deque transaction action={}, key={}, value={}) to slave".format(transaction.action, transaction.key, transaction.value))
+            if transaction.action == 'delete':
+                print("Deque transaction action={}, key={}, value={}) to slave".format(transaction.action,
+                                                                                       transaction.key,
+                                                                                       transaction.value))
+            else:
+                print("Deque transaction action={}, key={}) to slave".format(transaction.action,
+                                                                                       transaction.key,
+                                                                                       transaction.value))
             yield transaction
 
     # Define a decorator named replicate_to_slave
