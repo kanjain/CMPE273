@@ -1,6 +1,7 @@
-#This is a python replicator
+# Python replicator
 
-# Generate the proto file locally
+### Generate the proto file locally 
+
 python3.6 -m grpc.tools.protoc -I. --python_out=. --grpc_python_out=. replicationService.proto
 
 #Run server
