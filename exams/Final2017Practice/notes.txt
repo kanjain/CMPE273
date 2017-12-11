@@ -1,0 +1,6 @@
+virtualenv -p /export/apps/python/3.6/bin/python3.6 exam-venv
+
+
+/export/apps/python/2.7/bin/python2.7
+
+/export/apps/python/3.6/bin/python3.6
