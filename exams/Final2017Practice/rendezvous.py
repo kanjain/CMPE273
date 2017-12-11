@@ -41,7 +41,8 @@ class RendezvousHash(object):
         # t1 = weight |  t2 = node
         weights = []
         for node in self._nodes:
-            w = self.md5_hash(node + key)
+            x = node + key;
+            w = self.md5_hash(x.encode())
             weights.append((w, node))
 
         max_weight, highest_node = max(weights)
