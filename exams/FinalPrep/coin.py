@@ -1,5 +1,6 @@
 import hashlib
 from datetime import datetime
+from collections import OrderedDict
 
 class Coin():
 
@@ -61,7 +62,6 @@ class Coin():
         self.wallets[from_wallet] -= amount
         self.wallets[to_wallet] += amount
 
-
         return True
 
 
@@ -104,7 +104,50 @@ class Coin():
         """
         # TODO
 
-        return 'TODO'
+        # Form the merkle tree and get all the nodes in the tree.
+        nodes = OrderedDict()
+        nodes = self.create_tree(children, nodes)
+
+        # the last key in all nodes list is the root.
+        last_key = list(nodes.keys())[-1]
+        root = nodes[last_key]
+
+        return root
+
+
+    def create_tree(self, children, past_txn):
+        # past_transaction contains the previous level.
+        previous_level = past_txn
+        # temp_transaction contains the current level.
+        current_level = []
+
+        if len(children) == 1:
+            return previous_level
+
+        # loop over all the transactions.
+        for index in range(0, len(children), 2):
+            current_hash = children[index]
+            current_right_hash = children[index + 1]
+
+            # How to hash
+            # hashlib.sha256( (x).encode('utf-8') ).hexdigest()
+
+            # Add to previous level
+            previous_level[children[index]] = current_hash
+            previous_level[children[index + 1]] = current_right_hash
+
+
+            # Hash of A,B = HASH OF (HASH_A + HASH_B)
+            addition = current_hash + current_right_hash
+            hash_addition = hashlib.sha256(addition.encode('utf-8')).hexdigest()
+            current_level.append(hash_addition)
+
+
+        # Recursive call till we get the root.
+        if len(current_level) != 1:
+            past_transaction = self.create_tree(current_level, previous_level)
+
+        return previous_level
 
     
     def debug_print(self):
