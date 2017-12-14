@@ -36,6 +36,8 @@ def get_rendezvous_node(nodes, key):
             highest_node = node
             max_weight = w
 
+        #print(highest_node)
+
     return highest_node
 
 

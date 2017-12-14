@@ -145,7 +145,7 @@ class Coin():
 
         # Recursive call till we get the root.
         if len(current_level) != 1:
-            past_transaction = self.create_tree(current_level, previous_level)
+            previous_level = self.create_tree(current_level, previous_level)
 
         return previous_level
 
