@@ -19,3 +19,8 @@ pip install -r requirements.txt
 python -m grpc.tools.protoc -I. --python_out=. --grpc_python_out=. token.proto
 ```
 
+```sh
+SJSU coin is mapped to 0.0.0.0:3001
+UCLA coin is mapped to 0.0.0.0:3000
+SFSU coin is mapped to 0.0.0.0:3001
+```
