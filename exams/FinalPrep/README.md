@@ -19,6 +19,7 @@ pip install -r requirements.txt
 python -m grpc.tools.protoc -I. --python_out=. --grpc_python_out=. token.proto
 ```
 
+> PROBLEM 1 output for HRW.
 ```sh
 SJSU coin is mapped to 0.0.0.0:3001
 UCLA coin is mapped to 0.0.0.0:3000
