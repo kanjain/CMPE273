@@ -40,6 +40,28 @@ class Coin():
         # TODO
         # Move value amount from "from_wallet" to "to_wallet"
 
+
+        # check if the from_wallet is valid
+        if from_wallet not in self.wallets:
+            return False
+
+        # check if the to_wallet is valid
+        if to_wallet not in self.wallets:
+            return False
+
+        # check the from_wallet has sufficient amount
+        # key = person
+        # value = supply.
+        for key, value in self.wallets.items():
+            if key == from_wallet:
+                if value < amount:
+                    return False
+
+        # Move value amount from "from_wallet" to "to_wallet"
+        self.wallets[from_wallet] -= amount
+        self.wallets[to_wallet] += amount
+
+
         return True
 
 
@@ -107,7 +129,7 @@ if __name__ == '__main__':
     coin = Coin('CMPE_Coin', 100, { "Alice": 0, "Bob": 0 })
     if coin.transfer("owner", "Alice", 10): 
         coin.add_txn_to_blockchain("owner", "Alice", 10)
-    if coin.transfer("Alice", "Bob", 5): 
+    if coin.transfer("Alice", "Bob", 5):
         coin.add_txn_to_blockchain("Alice", "Bob", 5)
     coin.debug_print()
     

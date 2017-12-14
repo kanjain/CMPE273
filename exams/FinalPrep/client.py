@@ -28,7 +28,7 @@ def get_rendezvous_node(nodes, key):
 
         #print(key + " | " + node + " | " + w)
 
-        if w is None:
+        if highest_node is None:
             max_weight = w
             highest_node = node
 
