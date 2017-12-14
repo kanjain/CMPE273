@@ -25,3 +25,17 @@ SJSU coin is mapped to 0.0.0.0:3001
 UCLA coin is mapped to 0.0.0.0:3000
 SFSU coin is mapped to 0.0.0.0:3001
 ```
+
+
+> TEST
+```sh
+python3 coin_server_mapping.py
+
+python3 coin.py
+
+
+python3 server.py 0.0.0.0:3000 UCLA
+python3 server.py 0.0.0.0:3001 SFSU,SJSU
+
+python3 client.py
+```

@@ -2,6 +2,7 @@ import hashlib
 import grpc
 import token_pb2, token_pb2_grpc
 
+
 def get_rendezvous_node(nodes, key):
     """
     Find the highest hash value via hash(node+key) of Rendezvous hashing and the node that generates the highest
@@ -26,7 +27,7 @@ def get_rendezvous_node(nodes, key):
         x = x.encode('utf-8')
         w = hashlib.md5(x).hexdigest()
 
-        #print(key + " | " + node + " | " + w)
+        # print(key + " | " + node + " | " + w)
 
         if highest_node is None:
             max_weight = w
@@ -36,22 +37,19 @@ def get_rendezvous_node(nodes, key):
             highest_node = node
             max_weight = w
 
-        #print(highest_node)
+            # print(highest_node)
 
     return highest_node
 
 
 class Client():
-    
     def __init__(self, server):
         channel = grpc.insecure_channel(server)
         self.stub = token_pb2.TokenStub(channel=channel)
         print("Client connected to {}".format(server))
 
-
     def info(self):
         return self.stub.info(token_pb2.Empty())
-
 
     def transfer(self, symbol, from_wallet, to_wallet, amount):
         req = token_pb2.TransferRequest(symbol=symbol, fromWallet=from_wallet, toWallet=to_wallet, amount=amount)
@@ -60,16 +58,13 @@ class Client():
 
 
 class BlockchainClient():
-    
     def __init__(self, servers=None):
         self.servers = servers
-        
 
     def transfer(self, coin_symbol, from_wallet, to_wallet, amount):
         server = get_rendezvous_node(self.servers, coin_symbol)
         client = Client(server)
         return client.transfer(coin_symbol, from_wallet, to_wallet, amount)
-
 
     def info(self, coin):
         server = get_rendezvous_node(self.servers, coin)
@@ -79,7 +74,7 @@ class BlockchainClient():
 
 def test():
     coins = ['SFSU', 'SJSU', 'UCLA']
-    servers = ['0.0.0.0:3001', '0.0.0.0:3001', '0.0.0.0:3000']
+    servers = ['0.0.0.0:3000', '0.0.0.0:3001', '0.0.0.0:3002']
 
     for coin in coins:
         # Sending test transactions.
