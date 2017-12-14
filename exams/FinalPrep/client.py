@@ -79,7 +79,7 @@ class BlockchainClient():
 
 def test():
     coins = ['SFSU', 'SJSU', 'UCLA']
-    servers = ['0.0.0.0:3000', '0.0.0.0:3001', '0.0.0.0:3002']
+    servers = ['0.0.0.0:3001', '0.0.0.0:3001', '0.0.0.0:3000']
 
     for coin in coins:
         # Sending test transactions.
