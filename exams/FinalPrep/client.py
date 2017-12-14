@@ -2,11 +2,6 @@ import hashlib
 import grpc
 import token_pb2, token_pb2_grpc
 
-def md5_hash(key):
-    key = key.encode('utf-8')
-    return hashlib.md5(key).hexdigest()
-
-
 def get_rendezvous_node(nodes, key):
     """
     Find the highest hash value via hash(node+key) of Rendezvous hashing and the node that generates the highest
@@ -28,7 +23,8 @@ def get_rendezvous_node(nodes, key):
     for node in nodes:
         # call the hash method
         x = node + key
-        w = md5_hash(x)
+        x = x.encode('utf-8')
+        w = hashlib.md5(x).hexdigest()
 
         #print(key + " | " + node + " | " + w)
 
